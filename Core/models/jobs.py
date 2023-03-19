@@ -26,6 +26,7 @@ class JobsPost(CommonFieldModel):
     job_title = models.CharField(
         _('Job Title in English'), max_length=255
     )
+    image = models.ImageField(null=True, blank=True, upload_to='job_images')
     slug = models.SlugField(unique=True, blank=True, null=True)
     vacancy = models.CharField(
         max_length=255, blank=True, null=True,
