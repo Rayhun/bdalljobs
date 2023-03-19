@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 
 from .local_settings import (
-    SECRET_KEY, TEMPLATES_DIR, BASE_DIR, STATIC_DIR, MEDIA_DIR, DEBUG,
+    SECRET_KEY, TEMPLATES_DIR, STATICFILES_DIR, STATIC_DIR, MEDIA_DIR, DEBUG,
     ALLOWED_HOSTS, DB_CONFIG
 )
 
@@ -126,11 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-STATICFILES_DIR = [
-    os.path.join(BASE_DIR, 'staticfiles')
-]
+STATIC_ROOT = STATIC_DIR  # production, don't forget to run collectstatic
+STATICFILES_DIRS = [STATICFILES_DIR, ]  # development environment
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
