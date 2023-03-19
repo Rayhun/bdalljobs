@@ -120,6 +120,3 @@ temp/
 # IDE
 .idea/
 .vscode/
-
-# requirements files
-/requirements.txt
