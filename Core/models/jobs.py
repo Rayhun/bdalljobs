@@ -90,11 +90,11 @@ class JobsPost(CommonFieldModel):
         if not self.slug:
             data = f"{self.job_title}-{self.pk}"
             self.slug = slugify(data)
-        if self.job_skills:
-            for obj in self.job_skills.all():
-                try:
-                    skill = obj.name.title()
-                    Skill.objects.get(skill_name=skill)
-                except Exception as e:
-                    Skill.objects.create(skill_name=obj.name)
+        # if self.job_skills:
+        #     for obj in self.job_skills.all():
+        #         try:
+        #             skill = obj.name.title()
+        #             Skill.objects.get(skill_name=skill)
+        #         except Exception as e:
+        #             Skill.objects.create(skill_name=obj.name)
         super(JobsPost, self).save(*args, **kwargs)
