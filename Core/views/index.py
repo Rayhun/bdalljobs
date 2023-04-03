@@ -2,7 +2,7 @@ from django.views.generic import TemplateView
 from Core.models import JobsPost
 
 
-class Index(TemplateView):
+class IndexView(TemplateView):
     template_name = 'Core/home.html'
 
     def get_context_data(self, **kwargs):

@@ -1,6 +1,8 @@
+"""Core > apps.py"""
+# DJANGO IMPORTS
 from django.apps import AppConfig
 
 
 class CoreConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
+    """Core app configuration"""
     name = 'Core'
