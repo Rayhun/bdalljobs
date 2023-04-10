@@ -56,8 +56,9 @@ class JobsPost(CommonFieldModel):
     category = models.ManyToManyField(
         Category, related_name='jobs', blank=True
     )
-    employment_status = models.ManyToManyField(
-        EmploymentStatus, related_name='jobs', blank=True
+    employment_status = models.ForeignKey(
+        EmploymentStatus, related_name='jobs',on_delete=models.SET_NULL,
+        null=True
     )
     job_level = models.ManyToManyField(
         JobLevel, related_name='jobs', blank=True
@@ -87,9 +88,10 @@ class JobsPost(CommonFieldModel):
         return self.job_title
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            data = f"{self.job_title}-{self.pk}"
-            self.slug = slugify(data)
+        # if not self.slug:
+        data = f"{self.job_title}-{self.pk}"
+        self.slug = slugify(data)
+        # print(self.job_skills.all(), "*" * 100)
         # if self.job_skills:
         #     for obj in self.job_skills.all():
         #         try:

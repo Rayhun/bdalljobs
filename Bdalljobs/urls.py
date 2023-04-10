@@ -47,6 +47,9 @@ urlpatterns = [
 
     # drf api auth ------------------------------------------------------------
     path('api-auth/', include('rest_framework.urls')),
+
+    # ckeditor ----------------------------------------------------------------
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 # serve media files in development environment --------------------------------

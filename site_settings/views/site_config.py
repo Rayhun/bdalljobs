@@ -23,8 +23,6 @@ def site_info(request):
             short_name="'*****Please update the object in the Site Settings model*****'", # noqa
             is_active=True
         )
-
-    logger.info(f"{host} {'*' * 10} Welcome to{site.name} {'*' * 10}")
     context = {
         'site': site
     }

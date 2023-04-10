@@ -21,7 +21,7 @@ from Bdalljobs.local_settings import (
 from Bdalljobs.logging import LOGGING
 from Bdalljobs.juzzmin import CONFIG
 
-Bdalljobs = 'Bdalljobs'
+PROJECT_NAME = 'Bdalljobs'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...) -------
 SETTINGS_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -102,7 +102,10 @@ PLUGIN_APPS = [
     # https://django-dbbackup.readthedocs.io/
     'dbbackup',
     # https://pypi.org/project/django-taggit/
-    'taggit'
+    'taggit',
+    # https://django-ckeditor.readthedocs.io/en/latest/#installation
+    'ckeditor',
+    'ckeditor_uploader'
 ]
 
 # add project applications here
@@ -300,3 +303,13 @@ CELERY_CACHE_BACKEND = os.getenv(
 
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': 'backup/'}
+
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'  # noqa
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 250,
+        'width': 750,
+    }
+}
