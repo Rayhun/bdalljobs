@@ -51,10 +51,25 @@ a:hover {
     background: #D89353 !important;
     color: #fff !important;
 }
+.section-odd{
+    padding: 25px 0px;
+    background: #eeeeee;
+}
+.section-even{
+    padding: 25px 0px;
+    background: #fff;
+}
+.title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #666;
+}
 /* ============== END COMMON ==================== */
 /* =============== NAVBAR ======================== */
 .navbar{
     background: #065196 !important;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
 }
 .navbar .navbar-nav .nav-item .nav-link{
     color: #fff !important;
@@ -120,6 +135,28 @@ a:hover {
     background: #bd8e63 !important;
 }
 /* =================== BANNER LEFT END ================== */
+
+/* =================== TOP COMPANY START ================== */
+#best-match .container .row .card-body h5 {
+    font-size: 14px;
+    font-weight: 400;
+}
+#best-match .container .row .card-body h6 {
+    font-size: 14px;
+    font-weight: 400;
+}
+#best-match .container .row .card-body .apply {
+    font-size: 12px;
+    padding: 3px 5px;
+}
+#best-match .container .row .card-body .skills {
+    font-size: 11px;
+    background: gray;
+    padding: 0px 2px;
+    color: #fff;
+}
+/* =================== TOP COMPANY END ================== */
+
 /* =================== FOOTER START =================== */
 
 footer {
