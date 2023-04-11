@@ -22,18 +22,21 @@
 <!-- CSS -->
 {% block css %}
     {% block css_main %}
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <!-- FontAwesome -->
-        <script src="https://kit.fontawesome.com/8c012c69b1.js" crossorigin="anonymous"></script>
-        <!-- add your css here -->
-        <link rel="stylesheet" href="{% static 'css/project.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Select 2 -->
+    <link href="{% static 'css/select2.min.css' %}" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     {% endblock css_main %}
     {% block css_extra %}{% endblock css_extra %}
 
     {% block font_main %}
         <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Bebas+Neue&family=Saira+Condensed&display=swap" rel="stylesheet">
         <!-- add your fonts here -->
+        <link href="https://fonts.googleapis.com/css2?family=Rubik+Pixels&display=swap" rel="stylesheet">
     {% endblock font_main %}
     {% block font_extra %}{% endblock font_extra %}
 {% endblock css %}

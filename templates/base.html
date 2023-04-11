@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <!-- TITLE -->
+    {% block title %}
+        <title>{% block title_text %}Base{% endblock title_text %} | BD ALL JOBS</title>
+    {% endblock title %}
+
+    <!-- META, FAVICON, CSS -->
+    {% include 'snippets/base_head.html' %}
+</head>
+<body>
+    <div id="wrapper">
+        <!-- NAVBAR -->
+        {% include 'snippets/navbar.html' %}
+
+        <!-- BODY -->
+        {% block content %}
+        {% endblock content %}
+
+        
+        <!-- Footer Start  -->
+        {% include 'snippets/footer.html' %}
+        <!-- Footer End -->
+        <!-- META, FAVICON, CSS -->
+        {% include 'snippets/base_scripts.html' %}
+    </div>
+</body>
+</html>
