@@ -1,436 +1,82 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 {% load static %}
-<head>
-    <title>All Jobs</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link href="css/google-font.css">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link href="{% static 'css/select2.min.css' %}" rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+{% block title_text %}Home{% endblock title_text %}
 
-</head>
-
-<body>
-    <!-- HEADER -->
-    <div id="wrapper">
-        <!--banner starts here -->
-        <section class="header_banner">
-            <div class="icon_banner">
-                <div class="header_panel">
-                    <nav class="navbar navbar-expand-lg megamenu py-3">
-                        <div class="container">
-                            <a class="navbar-brand" href="/">WTJOBSjobs</a>
-
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header">
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                    <i class="fa-solid fa-bars"></i>
-                                </button>
+{% block content %}
+<!-- Banner -->
+<section id="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>You are very close to <span>success.</span></h3>
+                <h3>Your related jobs are <a href="">here.</a></h3>
+                <form action="" method="get">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="small fw-light">Click any one to get specific job search results</div>
+                            <div class="btn-group">
+                                <input type="radio" class="btn-check" name="options" value="1" id="option1" />
+                                <label class="btn button-color" for="option1">Checked</label>
+                            
+                                <input type="radio" class="btn-check" name="options" value="2" id="option2" />
+                                <label class="btn button-color mx-1" for="option2">Radio</label>
+                            
+                                <input type="radio" class="btn-check" name="options" value="3" id="option3" />
+                                <label class="btn button-color" for="option3">Radio</label>
+                            </div>                            
+                            <div class="input-group mb-3 mt-1">
+                                <span class="input-group-text border-end-0 bg-white">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                                <input type="search" name="q" class="form-control" placeholder="Find your dream job.">
+                                <button class="btn btn-sm button-color">SEARCH JOBS</button>
                             </div>
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav main_menu">
-                                    <li>
-                                        <a href="/fresher-jobs-by-skills/">Govt. Jobs</a>
-                                    </li>
-                                    <li>
-                                        <a href="/internship-jobs/">Private Jobs</a>
-                                    </li>
-                                    <li>
-                                        <a href="/companies/">Foreign jobs</a>
-                                    </li>
-                                    <li>
-                                        <a href="/companies/">Others jobs</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- /.navbar-collapse -->
-                        </div>
-                    </nav>
-                </div>
-
-                <!-- search_login starts here -->
-                <section id="banner">
-                    <div class="container search_login_row">
-                        <div class="row mar_lr_0 search_login_blocks">
-                            <div class="search_block col-md-8 col-sm-12">
-                                <p class="message">You are very close to success. <br>
-                                    Our goal is to help you succeed</p>
-                                <div class="tabs_block">
-                                    <ul class="tabs">
-                                        <li><button class="job_type active_button" id="full-time">Full Time</button>
-                                        </li>
-                                        <li><button class='job_type' id="internship">Internship</button></li>
-                                        <li><button class='job_type' id="walk-in">Walkin</button></li>
-                                        <li><button class='job_type' id="Fresher">Fresher</button></li>
-                                    </ul>
-                                    <div class="search_location_other_block">
-                                        <div class="job-location_other">
-                                            <form class="form-inline autocomplete-me search-form" name="search-form"
-                                                id="search-form" method="POST">
-                                                <div class="input-group">
-                                                    <label class="sr-only"></label>
-                                                    <select class="form-select form-control_opt" name="location"
-                                                        id="job_location ">
-                                                        <option value="">Location</option>
-                                                        <option value="1">Dhaka</option>
-                                                    </select>
-
-                                                    <label class="sr-only"></label>
-                                                    <input type="text"
-                                                        class="form-control form-control_opt content_wrap_list"
-                                                        id="q-field" name="q"
-                                                        placeholder="Enter Any Skills, Qualifications"
-                                                        autocomplete="off">
-                                                    <input type="hidden" name="job_type" id='job_type'>
-                                                    <button type="submit" class="btn btn-default">Search Jobs</button>
-
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="login_block col-md-4 col-sm-12">
-                                <div class="login_box">
-                                    <p class="head text-capitalize login_text">All Jobs Type!</p>
-                                    <div class="row">
-                                        <div class="col-md-6 job-box">
-                                            <a href="" class="btn btn-success w-100 py-4">Govt Jobs <span class="job-count">(255)</span></a>
-                                        </div>
-                                        <div class="col-md-6 job-box">
-                                            <a href="" class="btn btn-success w-100 py-4">Private Jobs <span class="job-count">(58,255)</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-4">
-                                        <div class="col-md-6 job-box">
-                                            <a href="" class="btn btn-success w-100 py-4">Foreign jobs <span class="job-count">(9,255)</span></a>
-                                        </div>
-                                        <div class="col-md-6 job-box">
-                                            <a href="" class="btn btn-success w-100 py-4">Others jobs <span class="job-count">(15,251)</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
-                </section>
-
-                <!-- search_login ends here -->
+                </form>
             </div>
-        </section>
-
-
-        <!-- main_container starts here -->
-        <section class="main_container">
-            <div class="container">
-                <div class="row mar_lr_0">
-                    <div class="col-md-9 left_container">
-                        <!-- register_block starts here -->
-                        <div class="row mar_lr_0 register_block">
-                            <div class="col-md-12 register_point border redirect_link" data-href="/alert/list/">
-                                <div class="text-center register_col">
-                                    <strong>Get Jobs Into your inbox</strong>
-                                    <p>This feature is a work in progress, please stay tuned. Hope it will be very useful.</p>
-                                </div>
+            <div class="col-md-4">
+                <div class="card job-count">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <span>250</span>
+                                            <h6>Govt Jobs</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <span>1522</span>
+                                            <h6>Private Jobs</h6>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                        <!-- register_block ends here -->
-                        
-                        <!-- top_locations starts here -->
-
-                        <div class="row mar_lr_0 top_locations">
-                            <div class="heading text-uppercase">Top Jobs</div>
-                            <div class="row jobs_columns">
-                                <div class="col-md-4 col-sm-6 job_outer_col">
-                                    <div class="job_col latest_jobs_class"
-                                        id='/hiring-manual-tester-0-to-3-years-20989/'>
-                                        <strong class="title"><a
-                                                href="http://localhost/hiring-manual-tester-0-to-3-years-20989/">Hiring
-                                                Manual Tester [0 - 3 Years]</a></strong>
-                                        <p>Conative IT Solutions Pvt Ltd</p>
-                                        <p><i class="fa fa-inr" aria-hidden="true"></i> <span>120000 P.A</span></p>
-                                        <p class="location"><i class="fa fa-map-marker"></i>
-                                            <a href="/jobs-in-indore/">Indore</a>
-                                        </p>
-                                        <!--<p><a href="https://WTJOBSjobs.com/full-time-jobs/" class="apply">full-time</a></p>-->
-                                        <p>
-                                            <a href="#" class='apply job_apply job_apply_login' id="20989"
-                                                data-href="/hiring-manual-tester-0-to-3-years-20989/?job_apply=applied">Apply
-                                                Now</a>
-                                        </p>
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <a href="">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <span>1522</span>
+                                            <h6>Foreign Jobs</h6>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6 job_outer_col">
-                                    <div class="job_col latest_jobs_class"
-                                        id='/freelancerpart-timeonline-marketingonlinemarketing-executive-0-to-0-years-20988/'>
-                                        <strong class="title"><a
-                                                href="http://localhost/freelancerpart-timeonline-marketingonlinemarketing-executive-0-to-0-years-20988/">FreelancerPart
-                                                timeOnline MarketingOnlineMarketing Executive [Fresher]</a></strong>
-                                        <p>TFG Vacations India Pvt. Ltd</p>
-                                        <p><i class="fa fa-inr" aria-hidden="true"></i> <span>270000 P.A</span></p>
-                                        <p class="location"><i class="fa fa-map-marker"></i>
-                                            <a href="/jobs-in-delhi/">Delhi</a>
-                                        </p>
-                                        <!--<p><a href="https://WTJOBSjobs.com/full-time-jobs/" class="apply">full-time</a></p>-->
-                                        <p>
-                                            <a href="#" class='apply job_apply job_apply_login' id="20988"
-                                                data-href="/freelancerpart-timeonline-marketingonlinemarketing-executive-0-to-0-years-20988/?job_apply=applied">Apply
-                                                Now</a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6 job_outer_col">
-                                    <div class="job_col latest_jobs_class"
-                                        id='/senior-content-writer-1-to-3-years-20986/'>
-                                        <strong class="title"><a
-                                                href="http://localhost/senior-content-writer-1-to-3-years-20986/">Senior
-                                                Content Writer [1 - 3 Years]</a></strong>
-                                        <p><a href="/innovays-business-services-pvt-ltd-job-openings/">Innovays business
-                                                services Pvt Ltd</a></p>
-                                        <p><i class="fa fa-inr" aria-hidden="true"></i> <span>180000 P.A</span></p>
-                                        <p class="location"><i class="fa fa-map-marker"></i>
-                                            <a href="/jobs-in-bangalore/">Bangalore</a>
-                                            ,
-                                            <a href="/jobs-in-karnataka/">Karnataka</a>
-                                        </p>
-                                        <!--<p><a href="https://WTJOBSjobs.com/full-time-jobs/" class="apply">full-time</a></p>-->
-                                        <p>
-                                            <a href="#" class='apply job_apply job_apply_login' id="20986"
-                                                data-href="/senior-content-writer-1-to-3-years-20986/?job_apply=applied">Apply
-                                                Now</a>
-                                        </p>
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
-
-
-                        <!-- top_locations edns here -->
-                        <!-- latest_jobs starts here -->
-                        <div class="latest_jobs row mar_lr_0">
-                            <div class="heading text-uppercase">Latest
-                                Jobs<!--<a class="pull-right view-more" href="#">View More</a>--></div>
-                            <div class="row jobs_columns">
-                                <div class="col-md-4 col-sm-6 job_outer_col">
-                                    <div class="job_col latest_jobs_class"
-                                        id='/hiring-manual-tester-0-to-3-years-20989/'>
-                                        <strong class="title"><a
-                                                href="http://localhost/hiring-manual-tester-0-to-3-years-20989/">Hiring
-                                                Manual Tester [0 - 3 Years]</a></strong>
-                                        <p>Conative IT Solutions Pvt Ltd</p>
-                                        <p><i class="fa fa-inr" aria-hidden="true"></i> <span>120000 P.A</span></p>
-                                        <p class="location"><i class="fa fa-map-marker"></i>
-                                            <a href="/jobs-in-indore/">Indore</a>
-                                        </p>
-                                        <!--<p><a href="https://WTJOBSjobs.com/full-time-jobs/" class="apply">full-time</a></p>-->
-                                        <p>
-                                            <a href="#" class='apply job_apply job_apply_login' id="20989"
-                                                data-href="/hiring-manual-tester-0-to-3-years-20989/?job_apply=applied">Apply
-                                                Now</a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6 job_outer_col">
-                                    <div class="job_col latest_jobs_class"
-                                        id='/freelancerpart-timeonline-marketingonlinemarketing-executive-0-to-0-years-20988/'>
-                                        <strong class="title"><a
-                                                href="http://localhost/freelancerpart-timeonline-marketingonlinemarketing-executive-0-to-0-years-20988/">FreelancerPart
-                                                timeOnline MarketingOnlineMarketing Executive [Fresher]</a></strong>
-                                        <p>TFG Vacations India Pvt. Ltd</p>
-                                        <p><i class="fa fa-inr" aria-hidden="true"></i> <span>270000 P.A</span></p>
-                                        <p class="location"><i class="fa fa-map-marker"></i>
-                                            <a href="/jobs-in-delhi/">Delhi</a>
-                                        </p>
-                                        <!--<p><a href="https://WTJOBSjobs.com/full-time-jobs/" class="apply">full-time</a></p>-->
-                                        <p>
-                                            <a href="#" class='apply job_apply job_apply_login' id="20988"
-                                                data-href="/freelancerpart-timeonline-marketingonlinemarketing-executive-0-to-0-years-20988/?job_apply=applied">Apply
-                                                Now</a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6 job_outer_col">
-                                    <div class="job_col latest_jobs_class"
-                                        id='/senior-content-writer-1-to-3-years-20986/'>
-                                        <strong class="title"><a
-                                                href="http://localhost/senior-content-writer-1-to-3-years-20986/">Senior
-                                                Content Writer [1 - 3 Years]</a></strong>
-                                        <p><a href="/innovays-business-services-pvt-ltd-job-openings/">Innovays business
-                                                services Pvt Ltd</a></p>
-                                        <p><i class="fa fa-inr" aria-hidden="true"></i> <span>180000 P.A</span></p>
-                                        <p class="location"><i class="fa fa-map-marker"></i>
-                                            <a href="/jobs-in-bangalore/">Bangalore</a>
-                                            ,
-                                            <a href="/jobs-in-karnataka/">Karnataka</a>
-                                        </p>
-                                        <!--<p><a href="https://WTJOBSjobs.com/full-time-jobs/" class="apply">full-time</a></p>-->
-                                        <p>
-                                            <a href="#" class='apply job_apply job_apply_login' id="20986"
-                                                data-href="/senior-content-writer-1-to-3-years-20986/?job_apply=applied">Apply
-                                                Now</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- latest_jobs ends here -->
-                    </div>
-                    <div class="col-md-3 right_container">
-                        <div class="walkin_jobs">
-                            <div class="heading text-uppercase">Best Jobs</div>
-                            <ul class="walkin_blocks">
-
-                                <li class="walkin_block"
-                                    id="/wanted---graphic-and-web-designer-in-pondicherry-1-to-2-years-18122/">
-                                    <strong class="title"><a
-                                            href="/wanted---graphic-and-web-designer-in-pondicherry-1-to-2-years-18122/">WANTED
-                                            - GRAPHIC and WEB DESIGNER IN PONDICHERRY</a></strong>
-                                    <p>AAKHAASH MEDIA COLLEGE</p>
-                                    <p class="location"><i class="fa fa-map-marker"></i>
-
-                                        <a href="/jobs-in-pondicherry/">Pondicherry</a>
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- main_container ends here -->
-        <!-- banner ends here -->
-        <!-- job_types_links starts here -->
-
-        <section class="job_types_links mar_lr_0">
-            <div class="container">
-                <div class="row  d-flex justify-content-center  mar_lr_0">
-                    <div class="col-md-2 col-sm-4 job_types_link_col">
-                        <ul>
-                            <li><a href="/jobs-by-skill/">Skills</a></li>
-                            <li><a href="/basic-computer-knowledge-jobs/">Jobs For Basic</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 col-sm-4  job_types_link_col">
-                        <ul>
-                            <li><a href="/jobs-by-industry/">Full Time</a></li>
-                            <li><a href="/it-software-industry-jobs/">Jobs For IT-Software</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 col-sm-4  job_types_link_col">
-                        <ul>
-                            <li><a href="/jobs-by-location/">Part Time</a></li>
-                            <li><a href="/jobs-in-bangalore/">Jobs in Bangalore</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 col-sm-4  job_types_link_col">
-                        <ul>
-                            <li><a href="/fresher-jobs/">Fresher</a></li>
-                            <li><a href="/basic-computer-knowledge-fresher-jobs/">Basic Computer … Fresher Jobs</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 col-sm-4  job_types_link_col">
-                        <ul>
-                            <li><a href="/internship-jobs/">Internship</a></li>
-                            <li><a href="/internship-jobs-in-hyderabad/">Internship Jobs in Hyderabad</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 col-sm-4  job_types_link_col">
-                        <ul>
-                            <li><a href="/companies/">Remote</a></li>
-
-                            <li><a href="/sumukh-multigrains-job-openings/" title="Sumukh Multigrains">Sumukh
-                                    Multigrains</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- job_types_links ends here -->
-        <div id="WaitDialog" class="hidden" style="text-align: center">
-            <div style="margin-top: 10px; color: white">
-                <b>Please wait</b>
             </div>
         </div>
-        <!-- footer starts here -->
-        <section>
-            <footer>
-                <div class="container">
-                    <div class="row mar_lr_0">
-
-                        <div class="col-md-4 col-sm-12 col-xs-12 about">
-                            <strong class="logo">WTJOBSjobs</strong>
-                            <p>WTJOBSjobs is a platform to connect recruiters and job seekers from all over India. The
-                                features which make us stand out amongst the many available job portals is our
-                                uniqueness and the ease of use of our platform. We have many free of cost services in
-                                the platter, to offer to Job-seekers as well as to the recruiters.</p>
-                        </div>
-
-                        <div class="col-md-5 col-sm-12 col-xs-12 links">
-                            <ul class="footer_links">
-                                <li class="text-uppercase">About Us</li>
-                                <li><a href="/page/about-us/" target="_blank">About WTJOBSjobs</a></li>
-                                <li><a href="/sitemap/" target="_blank">Sitemap</a></li>
-                                <li><a href="/page/terms-conditions/" target="_blank">Terms &amp; Conditions</a></li>
-                                <li><a href="/page/privacy-policy/" target="_blank">Privacy Policy</a></li>
-                                <li><a href="/contact/" target="_blank">Contact Us</a></li>
-                            </ul>
-                            <ul class="footer_links">
-                                <li class="text-uppercase">Recruiter</li>
-                                <li><a href="/recruiter/login/" target="_blank">Registration</a></li>
-                                <li><a href="/page/recruiter-faq/" target="_blank">FAQs</a></li>
-                                <li><a href="/post-job/" target="_blank">Post Job For Free</a></li>
-                            </ul>
-                            <ul class="footer_links">
-                                <li class="text-uppercase">Job Seekers</li>
-
-                                <li><a href="#" data-bs-toggle="modal" data-bs-target="#login_register">Login /
-                                        Connect</a></li>
-
-                                <li><a href="/" target="_blank">Search Jobs</a></li>
-                                <li><a href="/jobs/" target="_blank">View All Jobs</a></li>
-                                <li><a href="/page/faq/" target="_blank">FAQs</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12 subscribe_social_copy">
-                            <div class="copy_right text-center">Copyright &copy; 2023 wt-jobs.com || <a
-                                    href="#" target="_blank">Development + SEO by BD CSE Solved</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </section>
-        <!-- footer ends here -->
     </div>
-    <div class="modal_loading">
-        <!-- Place at bottom of page -->
-    </div>
-
-    <!--/ select2 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"
-        integrity="sha512-pax4MlgXjHEPfCwcJLQhigY7+N8rt6bVvWLFyUMuxShv170X53TRzGPmPkZmGBhk+jikR8WBM4yl7A9WMHHqvg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
-        integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- Select2 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
-</body>
-
-</html>
+</section>
+{% endblock content %}
