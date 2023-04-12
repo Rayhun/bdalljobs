@@ -1,4 +1,8 @@
+
+import logging
 from django.db import models
+
+logger = logging.getLogger(__name__)
 
 
 class JobType(models.Model):
@@ -40,3 +44,18 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def open_job(self):
+        return self.jobs.filter(is_active=True, job_status__code='03').count()
+    
+    @property
+    def employee_need(self):
+        count = 0
+        for obj in self.jobs.filter(is_active=True, job_status__code='03'):
+            try:
+                vacancy = int(obj.vacancy)
+                count += vacancy
+            except Exception as e:
+                print(e)
+        return count
