@@ -11,18 +11,18 @@
             <div class="col-md-8">
                 <h3>You are very close to <span>success.</span></h3>
                 <h3>Your related jobs are <a href="">here.</a></h3>
-                <form action="" method="get">
+                <form action="{% url 'jobs:search' %}" method="get">
                     <div class="row">
                         <div class="col-md-10">
                             <div class="small fw-light">Click any one to get specific job search results</div>
                             <div class="btn-group">
-                                <input type="radio" class="btn-check" name="options" value="full-time" id="option1" />
+                                <input type="radio" class="btn-check" name="options" value="ft" id="option1" />
                                 <label class="btn button-color" for="option1">Full Time</label>
                             
-                                <input type="radio" class="btn-check" name="options" value="part-time" id="option2" />
+                                <input type="radio" class="btn-check" name="options" value="pt" id="option2" />
                                 <label class="btn button-color mx-1" for="option2">Part Time</label>
                             
-                                <input type="radio" class="btn-check" name="options" value="remote" id="option3" />
+                                <input type="radio" class="btn-check" name="options" value="rt" id="option3" />
                                 <label class="btn button-color" for="option3">Remote</label>
                             </div>                            
                             <div class="input-group mb-3 mt-1">
@@ -130,13 +130,16 @@
 <section id="best-match" class="section-even">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <h4 class="title">
                     <img style="width: 30px;" src="{% static 'images/icone/competition.png' %}"> 
                     Best Matches
                 </h4>
-                <hr>
             </div>
+            <div class="col-md-2">
+                <a href="" class="btn btn-sm button-color w-100 float-end">Show All</a>
+            </div>
+            <hr>
         </div>
         <div class="row">
             <div class="col-md-3 pt-4">
@@ -337,17 +340,20 @@
 <section id="latest-jobs" class="section-odd">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <h4 class="title">
                     <img style="width: 30px;" src="{% static 'images/icone/competition.png' %}"> 
                     Latest Jobs
                 </h4>
-                <hr>
             </div>
+            <div class="col-md-2">
+                <a href="" class="btn btn-sm button-color w-100 float-end">Show All</a>
+            </div>
+            <hr>
         </div>
         <div class="row">
             {% for job in latest_jobs %}
-            <div class="col-md-3 pt-4">
+            <div class="col-md-4 pt-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="title">{{ job.job_title }}</h5>
@@ -366,7 +372,7 @@
                         <div class="row">
                             <div class="col-7">
                                 {% for skill in job.skills.all %}
-                                <a class="btn btn-sm skills" href="">{{ skill|safe }}</a>
+                                <a class="btn btn-sm skills" href="{% url 'jobs:search' %}?skill={{ skill|safe }}">{{ skill|safe }}</a>
                                 {% endfor %}
                             </div>
                             <div class="col-5">
@@ -386,17 +392,20 @@
 <section id="govt-jobs" class="section-even">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <h4 class="title">
                     <img style="width: 30px;" src="{% static 'images/icone/competition.png' %}"> 
                     Govt Jobs
                 </h4>
-                <hr>
             </div>
+            <div class="col-md-2">
+                <a href="" class="btn btn-sm button-color w-100 float-end">Show All</a>
+            </div>
+            <hr>
         </div>
         <div class="row">
             {% for job in govt_jobs %}
-            <div class="col-md-3 pt-4">
+            <div class="col-md-4 pt-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="title">{{ job.job_title }}</h5>
@@ -415,7 +424,7 @@
                         <div class="row">
                             <div class="col-7">
                                 {% for skill in job.skills.all %}
-                                <a class="btn btn-sm skills" href="">{{ skill|safe }}</a>
+                                <a class="btn btn-sm skills" href="{% url 'jobs:search' %}?skill={{ skill|safe }}">{{ skill|safe }}</a>
                                 {% endfor %}
                             </div>
                             <div class="col-5">
@@ -435,17 +444,20 @@
 <section id="private-jobs" class="section-odd">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <h4 class="title">
                     <img style="width: 30px;" src="{% static 'images/icone/competition.png' %}"> 
                     Private Jobs
                 </h4>
-                <hr>
             </div>
+            <div class="col-md-2">
+                <a href="" class="btn btn-sm button-color w-100 float-end">Show All</a>
+            </div>
+            <hr>
         </div>
         <div class="row">
             {% for job in private_jobs %}
-            <div class="col-md-3 pt-4">
+            <div class="col-md-4 pt-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="title">{{ job.job_title }}</h5>
@@ -464,7 +476,7 @@
                         <div class="row">
                             <div class="col-7">
                                 {% for skill in job.skills.all %}
-                                <a class="btn btn-sm skills" href="">{{ skill|safe }}</a>
+                                <a class="btn btn-sm skills" href="{% url 'jobs:search' %}?skill={{ skill|safe }}">{{ skill|safe }}</a>
                                 {% endfor %}
                             </div>
                             <div class="col-5">
@@ -484,17 +496,20 @@
 <section id="foreign-jobs" class="section-even">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <h4 class="title">
                     <img style="width: 30px;" src="{% static 'images/icone/competition.png' %}"> 
                     Foreign Jobs
                 </h4>
-                <hr>
             </div>
+            <div class="col-md-2">
+                <a href="" class="btn btn-sm button-color w-100 float-end">Show All</a>
+            </div>
+            <hr>
         </div>
         <div class="row">
             {% for job in foreign_jobs %}
-            <div class="col-md-3 pt-4">
+            <div class="col-md-4 pt-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="title">{{ job.job_title }}</h5>
@@ -513,7 +528,7 @@
                         <div class="row">
                             <div class="col-7">
                                 {% for skill in job.skills.all %}
-                                <a class="btn btn-sm skills" href="">{{ skill|safe }}</a>
+                                <a class="btn btn-sm skills" href="{% url 'jobs:search' %}?skill={{ skill|safe }}">{{ skill|safe }}</a>
                                 {% endfor %}
                             </div>
                             <div class="col-5">
