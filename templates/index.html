@@ -100,57 +100,23 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Location</th>
-                                <th>Total Employ</th>
+                                <th>Total Employee Needed</th>
                                 <th>Total Job Post</th>
                                 <th>Open Job Post</th>
                                 <th>Flower</th>
                                 <th>Flowing</th>
                             </tr>
+                            {% for company in top_company %}
                             <tr>
-                                <th><a href="">Bd CSE Solved</a></th>
-                                <td>Bangladesh</td>
-                                <td>42</td>
-                                <td>5</td>
-                                <td><a href="">3</a></td>
-                                <td>648</td>
-                                <td>48</td>
+                                <th><a href="">{{ company.name }}</a></th>
+                                <td>{{ company.location }}</td>
+                                <td>{{ company.employee }}</td>
+                                <td>{{ company.jobs.all.count }}</td>
+                                <td><a href="">{{ company.jobs.all.count }}</a></td>
+                                <td>---</td>
+                                <td>---</td>
                             </tr>
-                            <tr>
-                                <th><a href="">Tiger Park Ltd.</a></th>
-                                <td>Bangladesh</td>
-                                <td>22</td>
-                                <td>98</td>
-                                <td><a href="">2</a></td>
-                                <td>9485</td>
-                                <td>58</td>
-                            </tr>
-                            <tr>
-                                <th><a href="">Bd All Jobs</a></th>
-                                <td>Bangladesh</td>
-                                <td>12</td>
-                                <td>2</td>
-                                <td><a href="">1</a></td>
-                                <td>52</td>
-                                <td>584</td>
-                            </tr>
-                            <tr>
-                                <th><a href="">Wixinx</a></th>
-                                <td>India</td>
-                                <td>7</td>
-                                <td>2</td>
-                                <td><a href="">1</a></td>
-                                <td>152</td>
-                                <td>4584</td>
-                            </tr>
-                            <tr>
-                                <th><a href="">Enthrall IT</a></th>
-                                <td>United State Of America</td>
-                                <td>125</td>
-                                <td>13</td>
-                                <td><a href="">7</a></td>
-                                <td>352</td>
-                                <td>884</td>
-                            </tr>
+                            {% endfor %}
                         </table>
                     </div>
                 </div>
@@ -368,7 +334,7 @@
 <!-- Best Match End -->
 
 <!-- Latest Job Start -->
-<section id="best-match" class="section-odd">
+<section id="latest-jobs" class="section-odd">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -380,7 +346,7 @@
             </div>
         </div>
         <div class="row">
-            {% for job in jobs %}
+            {% for job in latest_jobs %}
             <div class="col-md-3 pt-4">
                 <div class="card">
                     <div class="card-body">
@@ -417,7 +383,7 @@
 <!-- Latest Job End -->
 
 <!-- Govt Job Start -->
-<section id="best-match" class="section-even">
+<section id="govt-jobs" class="section-even">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -429,202 +395,44 @@
             </div>
         </div>
         <div class="row">
+            {% for job in govt_jobs %}
             <div class="col-md-3 pt-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
+                        <h5 class="title">{{ job.job_title }}</h5>
                         <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
+                            <div class="col-6">{{ job.employment_status }}</div>
+                            <div class="col-6 text-end">[{{ job.experience }}]</div>
                         </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
+                        <h6><a href="hhh">{{ job.company }}</a></h6>
                         <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
+                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> {{ job.job_location }}</div>
                             <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
+                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 
+                                {% if job.is_negotiable %} Negotiable {% else %} {{ job.salary }}{% endif %}
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
+                                {% for skill in job.skills.all %}
+                                <a class="btn btn-sm skills" href="">{{ skill|safe }}</a>
+                                {% endfor %}
                             </div>
                             <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
+                                <a href="{% url 'jobs:detail' job.slug %}" class="btn btn-sm button-color apply">Apply Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
 <!-- Govt Job End -->
 
 <!-- Private Job Start -->
-<section id="best-match" class="section-odd">
+<section id="private-jobs" class="section-odd">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -636,202 +444,44 @@
             </div>
         </div>
         <div class="row">
+            {% for job in private_jobs %}
             <div class="col-md-3 pt-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
+                        <h5 class="title">{{ job.job_title }}</h5>
                         <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
+                            <div class="col-6">{{ job.employment_status }}</div>
+                            <div class="col-6 text-end">[{{ job.experience }}]</div>
                         </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
+                        <h6><a href="hhh">{{ job.company }}</a></h6>
                         <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
+                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> {{ job.job_location }}</div>
                             <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
+                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 
+                                {% if job.is_negotiable %} Negotiable {% else %} {{ job.salary }}{% endif %}
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
+                                {% for skill in job.skills.all %}
+                                <a class="btn btn-sm skills" href="">{{ skill|safe }}</a>
+                                {% endfor %}
                             </div>
                             <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
+                                <a href="{% url 'jobs:detail' job.slug %}" class="btn btn-sm button-color apply">Apply Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
 <!-- Private Job End -->
 
 <!-- Foreign Job Start -->
-<section id="best-match" class="section-even">
+<section id="foreign-jobs" class="section-even">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -843,195 +493,37 @@
             </div>
         </div>
         <div class="row">
+            {% for job in foreign_jobs %}
             <div class="col-md-3 pt-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
+                        <h5 class="title">{{ job.job_title }}</h5>
                         <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
+                            <div class="col-6">{{ job.employment_status }}</div>
+                            <div class="col-6 text-end">[{{ job.experience }}]</div>
                         </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
+                        <h6><a href="hhh">{{ job.company }}</a></h6>
                         <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
+                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> {{ job.job_location }}</div>
                             <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
+                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 
+                                {% if job.is_negotiable %} Negotiable {% else %} {{ job.salary }}{% endif %}
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
+                                {% for skill in job.skills.all %}
+                                <a class="btn btn-sm skills" href="">{{ skill|safe }}</a>
+                                {% endfor %}
                             </div>
                             <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
+                                <a href="{% url 'jobs:detail' job.slug %}" class="btn btn-sm button-color apply">Apply Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 pt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="title">Software Engineer Needed</h5>
-                        <div class="row">
-                            <div class="col-6">Full Time</div>
-                            <div class="col-6 text-end">[3-4 Years]</div>
-                        </div>
-                        <h6><a href="hhh">BD All Jobs</a></h6>
-                        <div class="row">
-                            <div class="col-6"><i class="fa-solid fa-location-dot"></i> Bangladesh</div>
-                            <div class="col-6 text-end">
-                                <i class="fa-solid fa-bangladeshi-taka-sign"></i> 25000</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="btn btn-sm skills" href="">python</a>
-                                <a class="btn btn-sm skills" href="">django</a>
-                                <a class="btn btn-sm skills" href="">aws</a>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="btn btn-sm button-color apply">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

@@ -35,7 +35,7 @@
                                 </table>
                             </div>
                             <div class="col-4 text-end">
-                                <a href="" class="btn button-color btn-sm">Apply Online <i class="fa-solid fa-forward"></i></a>
+                                <a href="{{ object.application_site_url }}" target="_blank" class="btn button-color btn-sm">Apply Online <i class="fa-solid fa-forward"></i></a>
                                 <a href="" class="btn btn-outline-success btn-sm"> <i class="fa-regular fa-bookmark"></i></a>
                             </div>
                         </div>
@@ -61,22 +61,41 @@
                                         <td><i class="fa-solid fa-chart-simple"></i> {{ object.vacancy }}</td>
                                         <td>
                                             <i class="fa-solid fa-repeat"></i>
-                                            {% for obj in object.category.all %} <a href="">{{ obj }}, </a> {% endfor %}</td>
-                                        <td><i class="fa-solid fa-eye"></i> {{ object.view_count }} Views</td>
+                                            {% if object.gender == 1 %} Male
+                                            {% elif object.gender == 2 %} Female
+                                            {% elif object.gender == 3 %} Male & Female 
+                                            {% endif %}</td>
+                                        <td><i class="fa-solid fa-eye"></i> {{ object.job_type }}</td>
                                     </tr>
                                     <tr>
-                                        <td><i class="fa-solid fa-chart-simple"></i>
-                                            {% for obj in object.job_level.all %} <a href="">{{ obj }}, </a> {% endfor %}</td>
-                                        <td>
-                                            <i class="fa-solid fa-repeat"></i>
-                                            {% for obj in object.category.all %} <a href="">{{ obj }}, </a> {% endfor %}</td>
-                                        <td><i class="fa-solid fa-eye"></i> {{ object.view_count }} Views</td>
+                                        {% if object.min_age %}
+                                        <td>Min Age: {{ object.min_age }}</td>
+                                        {% endif %}
+                                        {% if object.max_age %}
+                                        <td>Max Age: {{ object.max_age }}</td>
+                                        {% endif %}
+                                        {% if object.application_with_email %}
+                                        <td> <i class="fas fa-envelope"></i> {{ object.application_with_email }}</td>
+                                        {% endif %}
                                     </tr>
                                 </table>
                                 <h5 class="title">Job Description</h5>
                                 <p>{{ object.job_context|safe }}</p>
-                                <h5 class="title">More Info</h5>
-                                <p>{}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="text-center text-muted">Read Before Apply</h5>
+                                        <p style="font-size: 16px; color: #444;">
+                                            Bd All Jobs is a hub for recruiters and job seekers.
+                                            From here you can choose the job as per your wish. 
+                                            Please select valid job and apply. We do not approve fake jobs. 
+                                            Our algorithm avoids this.
+                                            However, apply to each job at your own risk.
+                                            We are not responsible if you are cheated from now on.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

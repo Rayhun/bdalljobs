@@ -9,5 +9,8 @@ class JobDetailsView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['object'] = self.model.objects.get(slug=self.kwargs['slug'])
+        obj = self.model.objects.get(slug=self.kwargs['slug'])
+        obj.view_count += 1
+        obj.save()
+        context['object'] = obj
         return context
