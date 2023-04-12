@@ -67,6 +67,6 @@ if settings.DEBUG:
     ] + urlpatterns
 
 # admin site customizations ---------------------------------------------------
-admin.sites.AdminSite.site_header = "TPL_Django Administration"
-admin.sites.AdminSite.site_title = "TPL_Django Administration"
-admin.sites.AdminSite.index_title = "TPL_Django Admin Panel"
+admin.sites.AdminSite.site_header = "Bd All Jobs Administration"
+admin.sites.AdminSite.site_title = "Bd All Jobs Administration"
+admin.sites.AdminSite.index_title = "Bd All Jobs Admin Panel"

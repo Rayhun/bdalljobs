@@ -1,0 +1,88 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title_text %}Details{% endblock title_text %}
+
+{% block css_extra %}
+<style>
+     .title{
+        font-size: 16px !important;
+        color: #111 !important;
+     }
+     .company{
+        font-size: 14px !important;
+     }
+</style>
+{% endblock css_extra %}
+
+{% block content %}
+<section id="details" class="section-odd">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <h5 class="title">{{ object.job_title }}</h5>
+                                <h6 class="company"><a href="">{{ object.company }}</a></h6>
+                                <table class="table">
+                                    <tr>
+                                        <td>Start Date: {{ object.published_date|date:"d-m-Y" }}</td>
+                                        <td>End Date: {{ object.deadline_date|date:"d-m-Y" }}</td>
+                                        <td>Left: 25 days</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-4 text-end">
+                                <a href="" class="btn button-color btn-sm">Apply Online <i class="fa-solid fa-forward"></i></a>
+                                <a href="" class="btn btn-outline-success btn-sm"> <i class="fa-regular fa-bookmark"></i></a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table" style="width: 100%">
+                                    <tr>
+                                        <td style="width: 33.33%;"><i class="fa-solid fa-location-dot"></i> {{ object.job_location }}</span></td>
+                                        <td style="width: 33.33%;"><i class="fa-solid fa-business-time"></i> {{ object.experience }}</span></td>
+                                        <td style="width: 33.33%;"><i class="fa-solid fa-bangladeshi-taka-sign"></i> 
+                                            {% if object.is_negotiable %} Negotiable {% else %} {{ object.salary }}{% endif %}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa-solid fa-chart-simple"></i>
+                                            {% for obj in object.job_level.all %} <a href="">{{ obj }}, </a> {% endfor %}</td>
+                                        <td>
+                                            <i class="fa-solid fa-repeat"></i>
+                                            {% for obj in object.category.all %} <a href="">{{ obj }}, </a> {% endfor %}</td>
+                                        <td><i class="fa-solid fa-eye"></i> {{ object.view_count }} Views</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa-solid fa-chart-simple"></i> {{ object.vacancy }}</td>
+                                        <td>
+                                            <i class="fa-solid fa-repeat"></i>
+                                            {% for obj in object.category.all %} <a href="">{{ obj }}, </a> {% endfor %}</td>
+                                        <td><i class="fa-solid fa-eye"></i> {{ object.view_count }} Views</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa-solid fa-chart-simple"></i>
+                                            {% for obj in object.job_level.all %} <a href="">{{ obj }}, </a> {% endfor %}</td>
+                                        <td>
+                                            <i class="fa-solid fa-repeat"></i>
+                                            {% for obj in object.category.all %} <a href="">{{ obj }}, </a> {% endfor %}</td>
+                                        <td><i class="fa-solid fa-eye"></i> {{ object.view_count }} Views</td>
+                                    </tr>
+                                </table>
+                                <h5 class="title">Job Description</h5>
+                                <p>{{ object.job_context|safe }}</p>
+                                <h5 class="title">More Info</h5>
+                                <p>{}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -1,13 +1,13 @@
 [Unit]
-Description=TPL_Django-uWSGI-instance
+Description=bd_all_jobs-uWSGI-instance
 After=network.target postgresql-11.service
 
 [Service]
 User=centos
 Group=nginx
-WorkingDirectory=/opt/TPL_Django
-Environment="PATH=/opt/TPL_Django/venv/bin"
-ExecStart=/opt/TPL_Django/venv/bin/uwsgi --ini /opt/TPL_Django/uwsgi/uwsgi.ini
+WorkingDirectory=/opt/bd_all_jobs
+Environment="PATH=/opt/bd_all_jobs/venv/bin"
+ExecStart=/opt/bd_all_jobs/venv/bin/uwsgi --ini /opt/bd_all_jobs/uwsgi/uwsgi.ini
 Restart=always
 KillSignal=SIGQUIT
 Type=notify

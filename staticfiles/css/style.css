@@ -12,9 +12,11 @@ body {
 a {
     cursor: pointer;
     text-decoration: none;
+    color: #D89353;
 }
 a:hover {
     text-decoration: none;
+    color: #bd8e63;
 }
 .container {
     width: 1380px;
@@ -59,7 +61,7 @@ a:hover {
     padding: 25px 0px;
     background: #fff;
 }
-.title {
+section .title {
     font-size: 18px;
     font-weight: 700;
     color: #666;

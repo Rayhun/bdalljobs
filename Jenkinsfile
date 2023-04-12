@@ -8,7 +8,7 @@ pipeline {
     environment {
         GH_SCRIPT = 'scripts/repo_status_update.sh'
         GH_OWNER = 'Tiger-Park-Limited'
-        GH_REPO = 'TPL_Django'
+        GH_REPO = 'bd_all_jobs'
         GH_TOKEN = credentials('TPL_Repo_Status')
         PROJ_NAME = "Bdalljobs"
         PROJ_DIR = "/opt/$GH_REPO"
@@ -63,8 +63,8 @@ pipeline {
                         $PROJ_ENV/python manage.py wait_for_db
                         $PROJ_ENV/python manage.py migrate --noinput
                         $PROJ_ENV/python manage.py collectstatic --noinput
-                        sudo systemctl restart tpl_django
-                        sudo systemctl status tpl_django
+                        sudo systemctl restart bd_all_jobs
+                        sudo systemctl status bd_all_jobs
                     \"
                 """
             }
