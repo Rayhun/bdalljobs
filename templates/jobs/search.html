@@ -1,1 +1,110 @@
-{{ qs }}
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title_text %}Home{% endblock title_text %}
+
+{% block content %}
+<section id="search" class="section-odd">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-2">
+                <div class="card">
+                    <div class="card-body">
+                        <span>
+                            Search Keyword 
+                            <span style="background: rgb(11, 106, 184); color: #fff;">
+                                "{{ search }}"</span> |
+                                 Search Result ({{ qs.count }}) 
+                        </span>
+                        <form action="" method="get">
+                            <div class="input-group mb-3 mt-1">
+                                <span class="input-group-text border-end-0 bg-white">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                                <select class="form-select" name="options" style="font-size: 12px;">
+                                    <option value="">Select Label</option>
+                                    {% for obj in employee_stats %}
+                                    {% if obj.code == option %}
+                                    <option value="{{ obj.code }}" selected>{{ obj }}</option>
+                                    {% else %}
+                                    <option value="{{ obj.code }}">{{ obj }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                                <select name="job_type" id="job_type" class="form-select">
+                                    <option value="">Select Job Type</option>
+                                    {% for obj in all_job_type %}
+                                    {% if obj.code == job_type %}
+                                    <option value="{{ obj.code }}" selected>{{ obj }}</option>
+                                    {% else %}
+                                    <option value="{{ obj.code }}">{{ obj }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                                <input type="search" name="q" class="form-control" placeholder="Find your dream job." value="{% if search %}{{ search }}{% endif %}">
+                                <button class="btn btn-sm button-color">SEARCH JOBS</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        {% for obj in employee_stats %}
+                        {% if obj.code == option %}
+                        <input type="checkbox" name="employee_stats" class="search" checked value="{{ obj.code }}" disabled> {{ obj }} <br>
+                        {% else %}
+                        <input type="checkbox" name="employee_stats" class="search" value="{{ obj.code }}" disabled> {{ obj }} <br>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <div class="card-body">
+                        {% for obj in all_job_type %}
+                        {% if obj.code == job_type %}
+                        <input type="checkbox" name="employee_stats" class="search" checked value="{{ obj.code }}" disabled> {{ obj }} <br>
+                        {% else %}
+                        <input type="checkbox" name="employee_stats" class="search" value="{{ obj.code }}" disabled> {{ obj }} <br>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="row">
+                    {% for job in qs %}
+                    <div class="col-md-12 mt-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="title">{{ job.job_title }}</h4>
+                                <h5>{{ job.company }}</h5>
+                                <div class="row">
+                                    <div class="col-3"><i class="fa-solid fa-location-dot"></i> {{ job.job_location }}</div>
+                                    <div class="col-3">
+                                        <i class="fa-solid fa-bangladeshi-taka-sign"></i> 
+                                        {% if job.is_negotiable %} Negotiable {% else %} {{ job.salary }}{% endif %}
+                                    </div>
+                                    <div class="col-4">
+                                        {% for skill in job.skills.all %}
+                                        <a class="btn btn-sm skills" href="{% url 'jobs:search' %}?skill={{ skill|safe }}">{{ skill|safe }}</a>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-2 text-end">
+                                        <a href="{% url 'jobs:detail' job.slug %}" class="btn btn-sm button-color apply">Apply Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-3">
+                ads
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

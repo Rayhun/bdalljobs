@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from jobs.models import JobsPost, Company
+from jobs.models import JobsPost, Company, EmploymentStatus, JobType
 
 
 class IndexView(TemplateView):
@@ -7,6 +7,8 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['employee_stats'] = EmploymentStatus.objects.all()
+        context['job_type'] = JobType.objects.all()
         context['latest_jobs'] = JobsPost.objects.all().order_by('-id')[:8]
         govt_jobs = JobsPost.objects.filter(
             job_type__code='gj', is_active=True, job_status__code='03'

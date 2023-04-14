@@ -16,19 +16,21 @@
                         <div class="col-md-10">
                             <div class="small fw-light">Click any one to get specific job search results</div>
                             <div class="btn-group">
-                                <input type="radio" class="btn-check" name="options" value="ft" id="option1" />
-                                <label class="btn button-color" for="option1">Full Time</label>
-                            
-                                <input type="radio" class="btn-check" name="options" value="pt" id="option2" />
-                                <label class="btn button-color mx-1" for="option2">Part Time</label>
-                            
-                                <input type="radio" class="btn-check" name="options" value="rt" id="option3" />
-                                <label class="btn button-color" for="option3">Remote</label>
+                                {% for obj in employee_stats %}
+                                <input type="radio" class="btn-check" name="options" value="{{ obj.code }}" id="option{{ forloop.counter }}" />
+                                <label class="btn button-color me-1" for="option{{ forloop.counter }}">{{ obj }}</label>
+                                {% endfor %}
                             </div>                            
                             <div class="input-group mb-3 mt-1">
                                 <span class="input-group-text border-end-0 bg-white">
                                     <i class="fa fa-search"></i>
                                 </span>
+                                <!-- <select name="job_type" id="job_type" class="form-select">
+                                    <option value="">Select Job Type</option>
+                                    {% for job in job_type %}
+                                    <option value="{{ job.code }}">{{ job }}</option>
+                                    {% endfor %}
+                                </select> -->
                                 <input type="search" name="q" class="form-control" placeholder="Find your dream job.">
                                 <button class="btn btn-sm button-color">SEARCH JOBS</button>
                             </div>
