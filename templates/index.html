@@ -43,7 +43,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="">
+                                <a href="{% url 'jobs:job_type' 'gj' %}">
                                     <div class="card">
                                         <div class="card-body">
                                             <span>{{ all_govt_jobs.count }}</span>
@@ -53,7 +53,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="">
+                                <a href="{% url 'jobs:job_type' 'pj' %}">
                                     <div class="card">
                                         <div class="card-body">
                                             <span>{{ all_private_jobs.count }}</span>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col-md-12">
-                                <a href="">
+                                <a href="{% url 'jobs:job_type' 'fj' %}">
                                     <div class="card">
                                         <div class="card-body">
                                             <span>{{ all_foreign_jobs.count }}</span>
