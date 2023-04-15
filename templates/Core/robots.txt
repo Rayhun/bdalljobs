@@ -1,0 +1,25 @@
+# robots.txt file for 127.0.0.1:8001
+
+# All other agents will not spider 
+User-agent: *
+Disallow: /App_Data/
+Disallow: /apps/
+Disallow: /class/
+Disallow: /css/
+Disallow: /Data/
+Disallow: /datalog/
+Disallow: /datepicker/
+Disallow: /image/
+Disallow: /images/
+Disallow: /image_career/
+Disallow: /include_file/
+Disallow: /mis/
+Disallow: /stat_data/
+Disallow: /api/
+
+# Google Ad Sense
+User-agent: Mediapartners-Google
+Disallow:
+
+
+Sitemap: http://127.0.0.1:8001/sitemap.xml
