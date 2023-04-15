@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from jobs.models import JobsPost, Company, EmploymentStatus, JobType
+from jobs.models import JobsPost, EmploymentStatus, JobType
 
 
 class IndexView(TemplateView):
@@ -25,6 +25,6 @@ class IndexView(TemplateView):
         context['govt_jobs'] = govt_jobs[:8]
         context['private_jobs'] = private_jobs[:8]
         context['foreign_jobs'] = foreign_jobs[:8]
-        context['top_company'] = Company.objects.all().order_by('jobs')[:5]
+        context['top_company'] = JobsPost.objects.all().distinct('company')
         return context
 

@@ -108,13 +108,13 @@
                                 <th>Flower</th>
                                 <th>Flowing</th>
                             </tr>
-                            {% for company in top_company %}
+                            {% for job in top_company %}
                             <tr>
-                                <th><a href="">{{ company.name }}</a></th>
-                                <td>{{ company.location }}</td>
-                                <td>{{ company.employee_need }}</td>
-                                <td>{{ company.jobs.all.count }}</td>
-                                <td><a href="">{{ company.open_job }}</a></td>
+                                <th><a href="">{{ job.company.name }}</a></th>
+                                <td>{{ job.company.location }}</td>
+                                <td>{{ job.company.employee_need }}</td>
+                                <td>{{ job.company.jobs.all.count }}</td>
+                                <td><a href="">{{ job.company.open_job }}</a></td>
                                 <td>---</td>
                                 <td>---</td>
                             </tr>
