@@ -100,3 +100,6 @@ class JobsPost(CommonFieldModel):
         #         except Exception as e:
         #             Skill.objects.create(skill_name=obj.name)
         super(JobsPost, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return f'/jobs/details/{self.slug}/'

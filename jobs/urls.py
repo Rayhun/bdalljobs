@@ -9,4 +9,5 @@ app_name = 'jobs'
 urlpatterns = [
     path('details/<str:slug>/', views.JobDetailsView.as_view(), name='detail'),
     path('search/', views.JobSearchView.as_view(), name='search'),
+    path('type/<str:code>/', views.JobTypeView.as_view(), name='job_type'),
 ]
