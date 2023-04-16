@@ -110,11 +110,11 @@
                             </tr>
                             {% for job in top_company %}
                             <tr>
-                                <th><a href="">{{ job.company.name }}</a></th>
+                                <th><a href="{% url 'company:profile' job.company.pk %}">{{ job.company.name }}</a></th>
                                 <td>{{ job.company.location }}</td>
                                 <td>{{ job.company.employee_need }}</td>
                                 <td>{{ job.company.jobs.all.count }}</td>
-                                <td><a href="">{{ job.company.open_job }}</a></td>
+                                <td><a href="{% url 'company:profile' job.company.pk %}">{{ job.company.open_job }}</a></td>
                                 <td>---</td>
                                 <td>---</td>
                             </tr>

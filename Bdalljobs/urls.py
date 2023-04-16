@@ -48,6 +48,9 @@ urlpatterns = [
     # jobs urls ---------------------------------------------------------------
     path('jobs/', include('jobs.urls')),
 
+    # company urls ------------------------------------------------------------
+    path('company/', include('company.urls')),
+
     # API urls ----------------------------------------------------------------
     path('api/', include('API.urls')),
 

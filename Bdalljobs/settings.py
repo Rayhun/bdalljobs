@@ -114,7 +114,8 @@ PROJECT_APPS = [
     'Core',
     'API',
     'site_settings',
-    'jobs'
+    'jobs',
+    'company'
 ]
 
 # consolidate all installed applications here

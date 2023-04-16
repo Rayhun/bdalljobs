@@ -48,6 +48,10 @@ class Company(models.Model):
     @property
     def open_job(self):
         return self.jobs.filter(is_active=True, job_status__code='03').count()
+
+    @property
+    def total_job(self):
+        return self.jobs.all().count()
     
     @property
     def employee_need(self):
