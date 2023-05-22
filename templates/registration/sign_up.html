@@ -1,0 +1,216 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+{% load widget_tweaks %}
+
+
+{% block title %} Job Seeker Registration {% endblock %}
+
+{% block content %}
+    <style>
+        .error {
+            color: rgb(146, 8, 8);
+        }
+
+        #id_password1-error, #id_password2-error {
+            position: absolute;
+            top: 35px;
+        }
+
+        .borders {
+            border: 2px solid rgb(141, 4, 4) !important;
+        }
+
+        .card .card-body .input-group-prepend .eys {
+            background: transparent !important;
+            border-left: 0;
+        }
+    </style>
+    <!-- Form -->
+    <div class="container mt5">
+        <div class="row my-5">
+            <div class="col-lg-8 mt-2">
+                <div class="card mt-2 pb-5 pt-3">
+                    <div class="card-body">
+                        
+                        <h5 class="card-title text-success py-2">{% translate "Sing Up" %}</h5>
+
+                        <form method="POST" novalidate id="jobseeker_form">
+
+                            {% csrf_token %}
+
+                            {% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                        <li{% if message.tags %}
+                                            class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+                            <div class="form-row my-3">
+                                <div class="form-group col-md-12">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" name="first_name" placeholder="First Name" required />
+                                    
+
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" required />
+                                    
+
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" name="email" placeholder="Email" required />
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputPassword">{% translate "Password" %}</label>
+                                    <div class="input-group" id="show_hide_password">
+                                        {% render_field form.password1|add_class:"form-control" placeholder="Enter Password" %}
+                                        
+                                    </div>
+                                    <small id="hint_id_email" class="form-text text-muted">Ex: Example1</small>
+                                    <label class="not_match " style="display: none; color: rgb(146, 8, 8); padding: 5px 0">{% translate "Password Not Match" %}</label>
+                                    <label class="match" style="display: none; color: green; padding: 5px 0">{% translate "Password Match" %}</label>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="inputPassword2">{% translate "Confirm Password" %}</label>
+                                    <div class="input-group" id="show_hide_password">
+                                        {% render_field form.password2|add_class:"form-control" placeholder="Enter Confirm Password" %}
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group pt-4 pb-2">
+
+                                <div class="form-check">
+                                    {% render_field form.is_agree|add_class:"form-check-input" %}
+                                    <label class="form-check-label"
+                                           for="gridCheck"> {% translate "I agree to the  bdallJobs Terms of use" %}. <a
+                                            href="#">{% translate "Terms & Conditions" %}</a> </label>
+                                    <div class="text-danger">{{ form.is_agree.errors }}</div>
+                                </div>
+
+                                
+                            </div>
+                            <button type="submit" class="btn px-5 btn-success"
+                                    id="submit">{% translate "Create Account" %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-2">
+                <div class="card mt-2 acrd-aleard">
+                    <div class="card-body">
+                        <div class="container">
+                            <form action="/action_page.php">
+                              <div class="col-md-12">
+    
+                                <div class="col-md-4">
+                                  <a href="#" class="fb btn">
+                                    <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                                   </a>
+                                  <a href="#" class="twitter btn">
+                                    <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+                                  </a>
+                                  <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+                                    </i> Login with Google+
+                                  </a>
+                                </div>
+                          
+                                
+                            </form>
+                          </div>
+                          
+                    </div>
+                </div>
+                <div class="card my-2 card-help">
+                    <div class="card-body">
+                        <span>{% translate "If you are facing any problem and have any query then feel free to ask" %}.</span>
+                        <div class="mobile">
+                            <i style="color: #0fa131;" class="fas fa-phone-alt"></i>
+                            <span>101</span>
+                        </div>
+                        <div class="email py-2">
+                            <i style="color: #2a2b2a;" class="far fa-envelope"></i>
+                            <span> jobs@bdalljobs.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5>{% translate "Already Registered" %}?</h5>
+                        <div class="mt-4">
+                            <a class="py-2 px-3 btn-success rounded"
+                               href="{% url 'signin' %}">{% translate "Sign In" %}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_script %}
+    <script>
+        $(document).ready(function () {
+            //  Password Hide and Show
+            $("#show_hide_password .eys").on('click', function (event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password svg').addClass("fa-eye-slash");
+                    $('#show_hide_password svg').removeClass("fa-eye");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password svg').removeClass("fa-eye-slash");
+                    $('#show_hide_password svg').addClass("fa-eye");
+                }
+            });
+            // Strong Password
+            $.validator.addMethod("pwcheck", function (value) {
+                return /((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]))/.test(value)
+            });
+            //
+            $("#jobseeker_form").validate({
+                rules: {
+                    password1: {
+                        required: true,
+                        pwcheck: true,
+                        minlength: 8
+                    },
+                    password2: {
+                        required: true,
+                        equalTo: "#id_password1"
+                    },
+                },
+                messages: {
+                    password1: {
+                        required: "Strong password required.",
+                        pwcheck: "Please provide a strong password!!",
+                        minlength: "password minimum 8 characters"
+                    },
+                    password2: {
+                        required: "Strong password required.",
+                        equalTo: "Password did not match"
+                    },
+                },
+                highlight: function (element) {
+                    $(element).addClass("borders")
+                },
+                unhighlight: function (element) {
+                    $(element).removeClass("borders")
+                }
+            });
+        });
+    </script>
+{% endblock extra_script %}

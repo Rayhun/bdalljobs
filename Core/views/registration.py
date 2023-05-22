@@ -113,6 +113,83 @@ class SignupView(CreateView):
         return super().form_invalid(form)
 
 
+class Sign_upView(CreateView):
+    """New user registration and signup view"""
+    model = USER_MODEL
+    form_class = SignupForm
+    template_name = 'registration/sign_up.html'
+
+    @staticmethod
+    def get_redirect_message(request):
+        """Returns a message to user when redirected"""
+        return _(
+            f"You are already registered as {request.user}. "
+            f"Redirected you to Index page. "
+            f"Please logout if you wish to create a new user."
+        )
+
+    def get(self, request, *args, **kwargs):
+        """GET method"""
+        logger.debug(  # prints class and function name
+            f"{self.__class__.__name__}.{_getframe().f_code.co_name} "
+            f"{request.user} is authenticated: {request.user.is_authenticated}"
+        )
+        # redirect authenticated users
+        if request.user.is_authenticated:
+            return redirect_auth_users(
+                request=request, message=self.get_redirect_message(request)
+            )
+
+        # if user is not authenticated, proceed with SignupView
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        """POST method"""
+        logger.debug(  # prints class and function name
+            f"{self.__class__.__name__}.{_getframe().f_code.co_name} "
+            f"Performing form validation..."
+        )
+        # redirect authenticated users
+        if request.user.is_authenticated:
+            return redirect_auth_users(
+                request=request, message=self.get_redirect_message(request)
+            )
+
+        # if user is not authenticated, proceed with SignupView
+        return super().post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        """form is clean and validated"""
+        logger.debug(  # prints class and function name
+            f"{self.__class__.__name__}.{_getframe().f_code.co_name} "
+            f"Form is clean and valid. Saving {form}"
+        )
+        self.object = form.save()
+        self.object.refresh_from_db()  # creates profile instance via signals
+
+        logger.debug(  # prints class and function name
+            f"{self.__class__.__name__}.{_getframe().f_code.co_name} "
+            f"User account was created for {self.object}."
+        )
+        message = _(
+            f"{self.object}, your user account was created successfully. "
+            f"Please login using your email address and password."
+        )
+        messages.success(request=self.request, message=message)
+        return redirect(reverse_lazy('login'))
+
+    def form_invalid(self, form):
+        """form is invalid"""
+        logger.debug(  # prints class and function name
+            f"{self.__class__.__name__}.{_getframe().f_code.co_name} "
+            f"Form is invalid. {form}"
+        )
+        logger.error(form.errors)  # log all form errors
+        message = _("Validation error, please check all fields for any error.")
+        messages.error(request=self.request, message=message)
+        return super().form_invalid(form)
+
+
 class LoginView(views.LoginView):
     """Overriding Django LoginView from django.contrib.auth.views"""
 

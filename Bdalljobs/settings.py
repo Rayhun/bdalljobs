@@ -99,6 +99,8 @@ PLUGIN_APPS = [
     'corsheaders',
     # https://docs.celeryproject.org/en/stable/django/first-steps-with-django.html#extensions
     'django_celery_results',
+    # https://django-crispy-forms.readthedocs.io/
+    'crispy_forms',
     # https://docs.celeryproject.org/en/stable/userguide/periodic-tasks.html
     'django_celery_beat',
     # https://django-dbbackup.readthedocs.io/
@@ -109,6 +111,7 @@ PLUGIN_APPS = [
     'ckeditor',
     'ckeditor_uploader'
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # add project applications here
 PROJECT_APPS = [
@@ -116,7 +119,7 @@ PROJECT_APPS = [
     'API',
     'site_settings',
     'jobs',
-    'company'
+    'company',
 ]
 
 # consolidate all installed applications here

@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<section id="profile" class="section-odd">
+    <div class="container">
+        <div>
+            <h2>Password For: <span id="emlSpan"></span></h2>
+        </div>
+        <label for="pwd">Password: </label>
+        <input type="password" id="pwd" />
+        
+</section>
+{% endblock content %}
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const ls = localStorage.getItem('eml');
+        const eml = document.getElementById('emlSpan');
+        eml.innerText = ls;
+    });
+</script>

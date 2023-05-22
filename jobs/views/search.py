@@ -28,8 +28,8 @@ class JobSearchView(View):
             qs = qs.filter(
                 Q(
                 job_title__icontains=search) | Q(
-                job_type__name=search) | Q (
-                company__name=search) | Q (
+                job_type__name=search) | Q(
+                company__name=search) | Q(
                 skills__in=skills
                 )
             ).distinct('job_title')
@@ -44,6 +44,7 @@ class JobSearchView(View):
         all_job_type = JobType.objects.all()
         context = {
             'qs': qs, 'employee_stats': employee_stats, 'search': search,
-            'option': option, 'job_type': job_type, 'all_job_type': all_job_type
+            'option': option, 'job_type': job_type,
+            'all_job_type': all_job_type
         }
         return render(request, self.template_name, context)

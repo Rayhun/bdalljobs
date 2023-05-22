@@ -28,8 +28,8 @@ class JobTypeView(View):
             qs = qs.filter(
                 Q(
                 job_title__icontains=search) | Q(
-                job_type__name=search) | Q (
-                company__name=search) | Q (
+                job_type__name=search) | Q(
+                company__name=search) | Q(
                 skills__in=skills
                 )
             ).distinct('job_title')

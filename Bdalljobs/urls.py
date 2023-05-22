@@ -21,7 +21,8 @@ from django.contrib.sitemaps.views import sitemap
 from django.contrib import admin
 from django.urls import include, path
 # CORE IMPORTS
-from Core.views import IndexView, SignupView, LoginView
+from Core.views import IndexView, SignupView, LoginView, Sign_upView
+
 
 from .sitemaps import (
     StaticViewSitemap, JobsPostSiteMap
@@ -56,7 +57,8 @@ urlpatterns = [
 
     # auth urls ---------------------------------------------------------------
     path('auth/signup/', SignupView.as_view(), name='signup'),
-    path('auth/login/', LoginView.as_view(), name='login'),
+    path('auth/sign_up/', Sign_upView.as_view(), name='sign_up'),
+    path('auth/signin/', LoginView.as_view(), name='signin'),
     path('auth/', include('django.contrib.auth.urls')),
 
     # drf api auth ------------------------------------------------------------
