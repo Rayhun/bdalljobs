@@ -6,10 +6,18 @@
 {% load widget_tweaks %}
 
 
-{% block title %} Job Seeker Registration {% endblock %}
+
 
 {% block content %}
     <style>
+        .body{
+            overflow: hidden;
+        }
+        .check{
+            position: absolute;
+            margin-top: 0.3rem;
+            margin-left: -1.25rem;
+        }
         .error {
             color: rgb(146, 8, 8);
         }
@@ -28,6 +36,8 @@
             border-left: 0;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- Form -->
     <div class="container mt5">
         <div class="row my-5">
@@ -35,7 +45,7 @@
                 <div class="card mt-2 pb-5 pt-3">
                     <div class="card-body">
                         
-                        <h5 class="card-title text-success py-2">{% translate "Sing Up" %}</h5>
+                        <h5 class="card-title text-success py-2">{% translate "Sign Up" %}</h5>
 
                         <form method="POST" novalidate id="jobseeker_form">
 
@@ -95,9 +105,10 @@
 
                                 <div class="form-check">
                                     {% render_field form.is_agree|add_class:"form-check-input" %}
+                                    <input class="form-check-input" type="checkbox" value="" style="position:absolute" id="check">
                                     <label class="form-check-label"
-                                           for="gridCheck"> {% translate "I agree to the  bdallJobs Terms of use" %}. <a
-                                            href="#">{% translate "Terms & Conditions" %}</a> </label>
+                                      for="gridCheck"> {% translate "I agree to the BDallJobs Terms of use" %}. <a
+                                            href="#"></a> </label>
                                     <div class="text-danger">{{ form.is_agree.errors }}</div>
                                 </div>
 
@@ -118,13 +129,13 @@
     
                                 <div class="col-md-4">
                                   <a href="#" class="fb btn">
-                                    <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                                    <i class="fa fa-facebook"></i> Login with Facebook
                                    </a>
                                   <a href="#" class="twitter btn">
-                                    <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+                                    <i class="fa fa-twitter"></i> Login with Twitter
                                   </a>
                                   <a href="#" class="google btn"><i class="fa fa-google fa-fw">
-                                    </i> Login with Google+
+                                    </i> Login with Google
                                   </a>
                                 </div>
                           
