@@ -9,8 +9,10 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-# CORE IMPORTS
+# Local IMPORTS
 from Core.models import User
+from jobs.models import Skill
+from .utility import SocialMediaName
 # PROMETHEUS IMPORTS
 from django_prometheus.models import ExportModelOperationsMixin
 
@@ -112,6 +114,27 @@ class Profile(ExportModelOperationsMixin('profile'), models.Model):
     def __str__(self):
         """String representation of Profile model"""
         return self.user.email
+
+
+class UserSkill(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    skill_name = models.ForeignKey(Skill, on_delete=models.CASCADE, null=True)
+    skill_lavel = models.PositiveIntegerField(help_text='1 to 100', default=0)
+
+    def __str__(self):
+        return self.skill_name
+
+
+class SocialMedia(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    social_media = models.ForeignKey(
+        SocialMediaName, on_delete=models.CASCADE, null=True
+    )
+    url = models.URLField()
+
+    def __str__(self):
+        return self.social_media.name
+
 
 
 @receiver(post_save, sender=User)
