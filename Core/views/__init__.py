@@ -1,6 +1,7 @@
 """Core > views > __init__.py"""
 from .index import IndexView
 from .registration import SignupView, LoginView, Sign_upView
+from .profile import Profile
 
 from .user import UserListView, UserDetailView, UserUpdateView, UserCreateView
 
@@ -11,6 +12,6 @@ from .user import UserListView, UserDetailView, UserUpdateView, UserCreateView
 #     UserUpdateView, UserCreateView,
 # ]
 __all__ = [
-    IndexView, LoginView, UserListView, UserDetailView,
+    IndexView, LoginView, UserListView, UserDetailView, Profile,
     UserUpdateView, UserCreateView, SignupView, Sign_upView
 ]
