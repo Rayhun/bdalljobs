@@ -129,3 +129,18 @@ class UserAdmin(
     def get_inline_instances(self, request, obj=None):
         """hides inlines during 'add user' view"""
         return obj and super().get_inline_instances(request, obj) or []
+
+
+@admin.register(models.UserSkill)
+class AdminUserSkill(admin.ModelAdmin):
+    list_display = ('user', 'skill_name', 'skill_lavel')
+
+
+@admin.register(models.SocialMediaName)
+class AdminSocialMediaName(admin.ModelAdmin):
+    list_display = ('name', 'url', 'icone')
+
+
+@admin.register(models.SocialMedia)
+class AdminSocialMediaName(admin.ModelAdmin):
+    list_display = ('user', 'url', 'social_media')
