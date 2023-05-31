@@ -22,6 +22,8 @@
 <!-- CSS -->
 {% block css %}
     {% block css_main %}
+    <link rel="stylesheet" href="{% static 'assets/css/fontawsom-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <!-- Bootstrap -->
@@ -30,6 +32,7 @@
     <link href="{% static 'css/select2.min.css' %}" rel="stylesheet" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    
     {% endblock css_main %}
     {% block css_extra %}{% endblock css_extra %}
 
@@ -38,8 +41,8 @@
         <!-- add your fonts here -->
         <link href="https://fonts.googleapis.com/css2?family=Rubik+Pixels&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         {% endblock font_main %}
     {% block font_extra %}{% endblock font_extra %}
 {% endblock css %}

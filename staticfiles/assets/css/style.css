@@ -1,0 +1,368 @@
+ul li{
+  list-style: none;
+}
+/* ===================================== Resume Template CSS ================================== */
+.top-cover {
+  background-image: url(../images/bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 315px;
+}
+
+.overcover {
+  padding: 15px;
+}
+
+.overcover .covwe-inn {
+  background-color: rgba(0, 0, 0, 0.658);
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
+
+@media screen and (max-width: 450px) {
+  .overcover .covwe-inn {
+    padding: 10px;
+  }
+}
+
+.overcover .covwe-inn .img-c img {
+  border-radius: 50%;
+  background-color: #FFF;
+  padding: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  width: 250px;
+  height: 250px;
+}
+
+.overcover .covwe-inn .tit-det {
+  padding-left: 10px;
+  margin: auto;
+}
+
+.overcover .covwe-inn .tit-det h2 {
+  color: #FFF;
+  font-size: 2.2rem;
+}
+
+@media screen and (max-width: 450px) {
+  .overcover .covwe-inn .tit-det h2 {
+    font-size: 1.8rem;
+  }
+}
+
+.overcover .covwe-inn .tit-det p {
+  color: #FFF;
+  font-size: .9rem;
+  text-indent: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .overcover .covwe-inn {
+    text-align: center;
+  }
+}
+
+.profile-box {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 0px;
+}
+
+.profile-box .nav-tabs {
+  background-color: #FFF;
+}
+
+.profile-box .nav-tabs li a {
+  padding: 10px 60px;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 974px) {
+  .profile-box .nav-tabs li a {
+    padding: 10px 30px;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 619px) {
+  .profile-box .nav-tabs li a {
+    padding: 10px 10px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .profile-box .nav-tabs li a {
+    font-size: .9rem;
+    padding: 10px 5px;
+  }
+}
+
+.profile-box .nav-tabs .active {
+  border-radius: 0px;
+  border-bottom: 3px solid #0062cc !important;
+}
+
+.profile-box .nav-tabs .nav-link {
+  width: 20%;
+  font-size: 18px;
+}
+
+.tab-content {
+  background-color: #FFF;
+}
+
+.home-det .big-img {
+  border-right: 1px solid #cccccc82;
+  padding: 15px;
+  text-align: center;
+}
+
+.home-det .home-dat {
+  padding: 25px;
+}
+
+@media screen and (max-width: 600px) {
+  .home-det .home-dat {
+    padding: 10px;
+  }
+}
+
+.home-det .home-dat h3 {
+  font-style: 22px;
+}
+
+.home-det .home-dat p {
+  text-indent: 20px;
+  font-size: 15px;
+}
+
+.home-det .home-dat .links {
+  padding: 29px 0px;
+}
+
+.home-det .home-dat .links .btn-link li {
+  float: left;
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: 1px solid #888;
+  margin-right: 10px;
+  color: #888;
+}
+
+@media screen and (max-width: 483px) {
+  .home-det .home-dat .links .btn-link li {
+    margin-right: 5px !important;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.home-det .home-dat .links .btn-link li i {
+  margin-top: 5px;
+}
+
+.home-det .home-dat .links .btn-link li a {
+  color: #888;
+}
+
+.home-det .home-dat .links .social-link {
+  float: right;
+}
+
+.home-det .home-dat .links .social-link li {
+  float: left;
+  padding: 5px;
+  border: 1px solid #888;
+  border-radius: 50px;
+  width: 35px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 483px) {
+  .home-det .home-dat .links .social-link li {
+    margin-right: 5px !important;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .home-det .home-dat .links {
+    padding: 20px 0px;
+  }
+
+  .home-det .home-dat .links .social-link {
+    margin-top: 20px;
+  }
+}
+
+.home-det .home-dat .addrss-list {
+  width: 100%;
+}
+
+.home-det .home-dat .addrss-list tr {
+  border-left: 1px solid #CCC;
+}
+
+.home-det .home-dat .addrss-list tr td {
+  padding: 13px 10px;
+  border: 1px solid #CCC;
+}
+
+.home-det .home-dat .addrss-list tr th {
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  padding: 13px 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .home-det .home-dat .addrss-list tr th {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .home-det .home-dat .addrss-list tr th {
+    width: 120px;
+  }
+}
+
+.ltitle {
+  font-size: 1.4rem;
+  margin-top: 20px;
+}
+
+.rit-titl {
+  font-size: 1.4rem;
+}
+
+.refer-cov {
+  padding: 8px;
+}
+
+.refer-cov b {
+  font-size: 1.1rem;
+}
+
+.refer-cov p {
+  font-size: 1rem;
+}
+
+.refer-cov span {
+  font-size: .9rem;
+}
+
+.hoby li {
+  float: left;
+  font-size: .9rem;
+  padding: 15px;
+  text-align: center;
+  width: 33.33%;
+}
+
+.hoby li i {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.profess-cover {
+  padding: 20px 0px;
+}
+
+.profess-cover .prog-row {
+  width: 100%;
+  text-align: left;
+  padding: 8px 2px;
+  font-size: .9rem;
+}
+
+.profess-cover .prog-row div {
+  padding: 0px;
+}
+
+.profess-cover .progress-bar {
+  background-color: #0062cc;
+}
+
+.exp-cover {
+  padding: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .exp-cover {
+    padding: 10px;
+  }
+}
+
+.exp-row {
+  margin: 0px;
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.exp-row h6 {
+  width: 100%;
+  font-size: .9rem;
+  margin-bottom: 5px;
+}
+
+.exp-row i {
+  margin-left: 10px;
+  font-size: .8rem;
+}
+
+.exp-row span {
+  color: #009b7f;
+  font-size: .8rem;
+  font-family: "mouse-500", Arial, Helvetica, sans-serif;
+}
+
+.exp-row p {
+  margin-top: 5px;
+  text-indent: 15px;
+}
+
+.sec-title {
+  padding: 20px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.service {
+  padding: 20px;
+}
+
+.service .resume-dat {
+  text-align: center;
+}
+
+.gallery img {
+  margin-top: 20px;
+}
+
+.contact-tab {
+  padding: 20px;
+}
+
+.contact-tab iframe {
+  width: 100%;
+  height: 400px;
+}
+
+.gallcoo {
+  padding: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .resume-dat {
+    margin-bottom: 10px;
+  }
+
+  .rgbf {
+    text-align: center;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
