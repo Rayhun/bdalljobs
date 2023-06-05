@@ -125,7 +125,7 @@
                                             </tr>
                                             <tr>
                                                 <th>Date of birth</th>
-                                                <td>09-06-1989</td>
+                                                <td>{{ object.profile.birthday }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -140,7 +140,7 @@
                                             </tr>
                                             <tr>
                                                 <th>Website</th>
-                                                <td>www.yourdomain.com</td>
+                                                <td><a href="{{ object.profile.website }}" target="_blank">{{ object.profile.website }}</a></td>
                                             </tr>
                                             <tr>
                                                 <th>Languages</th>
