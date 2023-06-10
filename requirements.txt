@@ -38,7 +38,6 @@ Pillow
 pipdeptree==2.0.0
 prometheus-client==0.10.0
 prompt-toolkit==3.0.18
-# psycopg2==2.8.6
 psycopg2-binary==2.9.6
 pycodestyle==2.7.0
 pyflakes==2.3.1
