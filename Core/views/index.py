@@ -25,5 +25,4 @@ class IndexView(TemplateView):
         context['govt_jobs'] = govt_jobs[:8]
         context['private_jobs'] = private_jobs[:8]
         context['foreign_jobs'] = foreign_jobs[:8]
-        context['top_company'] = JobsPost.objects.all().distinct('company')
         return context
