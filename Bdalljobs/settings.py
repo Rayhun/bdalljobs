@@ -173,9 +173,27 @@ LOGOUT_REDIRECT_URL = 'index'
 # Database --------------------------------------------------------------------
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': os.getenv('DB_CONFIG', DB_CONFIG)
+# }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'alljobsinbd',
+#         'USER': 'root',
+#         'PASSWORD': 'Atpl123#',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#     }
+# }
+
 DATABASES = {
-    'default': os.getenv('DB_CONFIG', DB_CONFIG)
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
+
 
 
 # Password validation ---------------------------------------------------------
