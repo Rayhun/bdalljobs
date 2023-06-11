@@ -15,5 +15,5 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ftp.alljobsinbd.com
-        username: ${{ secrets.username }}
-        password: ${{ secrets.ftp_password }}
+        username: rayhan@alljobsinbd.com
+        password: A41424344i@gmail.comA
