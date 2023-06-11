@@ -14,7 +14,7 @@
                 <form action="{% url 'jobs:search' %}" method="get">
                     <div class="row">
                         <div class="col-md-10">
-                            <div class="small fw-light">Click any one to get specific job search results</div>
+                            <div class="small fw-light text-light">Click any one to get specific job search results</div>
                             <div class="btn-group">
                                 {% for obj in employee_stats %}
                                 <input type="radio" class="btn-check" name="options" value="{{ obj.code }}" id="option{{ forloop.counter }}" />
