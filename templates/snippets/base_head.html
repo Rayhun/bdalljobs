@@ -2,21 +2,29 @@
 
 <!-- META -->
 {% block meta %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="author" content="Bd All Jobs" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="Content-Language" content="en-US"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
-    <meta name="description" content="bd_all_jobs">  <!-- site description -->
+    <meta property="og:title" content="BD All Jobs" />
+    <meta 
+        name="description" 
+        content="BD All Jobs is Job Circular Web Site in Bangladesh. Alljobs is the 
+        best choice of job seekers and recruiters for government and company jobs and Others Jobs.">  <!-- site description -->
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="">  <!-- update href to domain address -->
+    <meta name="keywords" content="all jobs, govet jobs, teletalk jobs, teletalk, jobs, job, all jobs in bd" />
+    <meta property="og:image" content="{% static 'images/logo/logo1.png' %}" />
+    <link rel="canonical" href="https://alljobsbd.com/" />
+
+
 {% endblock meta %}
 
 <!-- FACICON -->
 {% block favicon %}
-    <link rel="icon" href="{% static 'favicon/favicon.ico' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
-    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/logo/fav.png' %}">
 {% endblock favicon %}
 
 <!-- CSS -->
