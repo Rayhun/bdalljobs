@@ -20,19 +20,12 @@ class JobSearchView(View):
         if job_type:
             qs = qs.filter(job_type__code=job_type)
         if search:
-            try:
-                skills = Skill.objects.filter(skill_name__icontains=search)
-            except Exception as e:
-                print(e)
-                skills = None
             qs = qs.filter(
                 Q(
                 job_title__icontains=search) | Q(
                 job_type__name=search) | Q(
-                company__name=search) | Q(
-                skills__in=skills
-                )
-            ).distinct('job_title')
+                company__name=search)
+            )
         if get_skill:
             try:
                 skills = Skill.objects.filter(skill_name=get_skill)
