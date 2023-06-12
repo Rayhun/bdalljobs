@@ -6,13 +6,13 @@ https://django-jazzmin.readthedocs.io/configuration/
 CONFIG = {  # -----------------------------------------------------------------
 
     # title of the window
-    "site_title": "BD All Jobs",
+    "site_title": "ALL JOBS IN BD",
     # Title on the brand, and the login screen (19 chars max)
-    "site_header": "BD All Jobs",
+    "site_header": "All Jobs In Bd",
     # square logo to use for your site
     "site_logo": "tigerpark/logo.png",
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to BD All Jobs",
+    "welcome_sign": "Welcome to All Jobs In Bd",
     # Copyright on the footer
     "copyright": "Tiger Park Limited",
     # The model admin to search from the search bar

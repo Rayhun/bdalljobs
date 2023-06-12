@@ -92,6 +92,6 @@ if settings.DEBUG:
     ] + urlpatterns
 
 # admin site customizations ---------------------------------------------------
-admin.sites.AdminSite.site_header = "Bd All Jobs Administration"
-admin.sites.AdminSite.site_title = "Bd All Jobs Administration"
-admin.sites.AdminSite.index_title = "Bd All Jobs Admin Panel"
+admin.sites.AdminSite.site_header = "All Jobs In Bd Administration"
+admin.sites.AdminSite.site_title = "All Jobs In Bd Administration"
+admin.sites.AdminSite.index_title = "All Jobs In Bd Admin Panel"
