@@ -11,9 +11,9 @@
             <div class="col-md-8">
                 <h3>You are very close to <span>success.</span></h3>
                 <h3>Your related jobs are <a href="">here.</a></h3>
-                <form action="{% url 'jobs:search' %}" method="get">
-                    <div class="row">
-                        <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-10">
+                        <form action="{% url 'jobs:search' %}" method="get">
                             <div class="small fw-light text-light">Click any one to get specific job search results</div>
                             <div class="btn-group">
                                 {% for obj in employee_stats %}
@@ -25,18 +25,12 @@
                                 <span class="input-group-text border-end-0 bg-white">
                                     <i class="fa fa-search"></i>
                                 </span>
-                                <!-- <select name="job_type" id="job_type" class="form-select">
-                                    <option value="">Select Job Type</option>
-                                    {% for job in job_type %}
-                                    <option value="{{ job.code }}">{{ job }}</option>
-                                    {% endfor %}
-                                </select> -->
                                 <input type="search" name="q" class="form-control" placeholder="Find your dream job.">
                                 <button class="btn btn-sm button-color">SEARCH JOBS</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="card job-count">
