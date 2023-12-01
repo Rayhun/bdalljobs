@@ -3,7 +3,8 @@
 from django.urls import path
 # CORE IMPORTS
 from Core import views
-
+from django.urls import path
+from Core.views import create_user, login_step1, login_step2
 app_name = 'core'
 
 urlpatterns = [
@@ -28,4 +29,7 @@ urlpatterns = [
         views.UserUpdateView.as_view(),
         name='user_update'
     ),
+    path('create/', create_user, name='create_user'),
+    path('login_step1/', login_step1, name='login_step1'),
+    path('login_step2/', login_step2, name='login_step2'),
 ]

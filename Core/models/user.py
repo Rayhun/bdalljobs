@@ -148,3 +148,10 @@ class User(AbstractBaseUser, PermissionsMixin,
     def __str__(self):
         """User model string representation"""
         return self.email
+class Seeker(models.Model):
+    user_id = models.AutoField(primary_key=True)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    phone = models.CharField(max_length=15)
+    password = models.CharField(max_length=100)

@@ -1,0 +1,111 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% load i18n %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<div class="container mt-5">
+    <div class="row my-5">
+        <div class="col-lg-8 mt-2">
+            <div class="card mt-2 pb-5 pt-3">
+                <div class="card-body">
+
+                    <h5 class="card-title text-success py-2">{% translate "Login" %}</h5>
+
+                    <form method="POST" novalidate id="login_password_form">
+
+                        {% csrf_token %}
+
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li{% if message.tags %}
+                                        class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        <div class="form-row my-3">
+                            <div class="form-group col-md-12">
+                                <label for="password">{% translate "Password" %}</label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="{% translate "Password" %}" required />
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn px-5 btn-success" id="submit">{% translate "Login" %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mt-2">
+            <div class="card mt-2 acrd-aleard">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="#" class="fb btn">
+                                <i class="fa-brands fa-facebook"></i> Login with Facebook
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="#" class="twitter btn">
+                                <i class="fa-brands fa-x-twitter"></i> Login with Twitter
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="#" class="google btn">
+                                <i class="fa-solid fa-g"></i> Login with Gmail
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card my-2 card-help">
+                <div class="card-body">
+                    <span>{% translate "If you are facing any problem and have any query then feel free to ask" %}.</span>
+                    <div class="mobile">
+                        <i style="color: #0fa131;" class="fas fa-phone-alt"></i>
+                        <span>101</span>
+                    </div>
+                    <div class="email py-2">
+                        <i style="color: #2a2b2a;" class="far fa-envelope"></i>
+                        <span> jobs@bdalljobs.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5>{% translate "Already Registered" %}?</h5>
+                    <div class="mt-4">
+                        <a class="py-2 px-3 btn-success rounded" href="{% url 'core:login_step1' %}">{% translate "Sign In" %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% comment %} <!-- login_password.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Password</title>
+</head>
+<body>
+
+<h2>Login - Enter Password</h2>
+
+<form method="post" action="{% url 'core:login_step2' %}">
+    {% csrf_token %}
+    <input type="hidden" name="email" value="{{ email }}">
+    <label for="password">Password:</label>
+    <input type="password" name="password" required>
+    <button type="submit">Login</button>
+</form>
+
+</body>
+</html> {% endcomment %}

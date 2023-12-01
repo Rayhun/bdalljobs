@@ -60,7 +60,7 @@ urlpatterns = [
     path('auth/sign_up/', Sign_upView.as_view(), name='sign_up'),
     path('auth/signin/', LoginView.as_view(), name='signin'),
     path('auth/', include('django.contrib.auth.urls')),
-
+    path('core/', include('Core.urls')),
     # drf api auth ------------------------------------------------------------
     path('api-auth/', include('rest_framework.urls')),
 
